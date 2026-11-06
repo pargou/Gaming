@@ -1,0 +1,5 @@
+Options -Indexes
+
+# Fichiers internes du bot : pas besoin de les servir
+RedirectMatch 404 ^/(scripts|_bot|\.github)(/|$)
+RedirectMatch 404 ^/README\.md$

@@ -1,0 +1,25 @@
+{
+  "_aide": "Réglages du bot. Pour chaque chantier : les salons Discord dont il récupère les images, et les mots-clés qui le désignent quand une image est postée ailleurs (ex. dans #vrac). Un mot-clé doit être unique sur tous les jeux.",
+  "salons_vrac": ["vrac"],
+  "jeux": {
+    "valheim": {
+      "nom": "Valheim",
+      "accroche": "Châteaux, villages et intérieurs bâtis à la main, monde après monde.",
+      "chantiers": [
+        { "id": "chateau-asgard",     "nom": "Asgard",        "type": "chateau",     "numero": 1, "detail": "xayah",  "salons": ["chateau1-asgard-xayah-5"],     "mots_cles": ["asgard", "xayah"] },
+        { "id": "chateau-muspelheim", "nom": "Muspelheim",    "type": "chateau",     "numero": 2, "detail": "vi",     "salons": ["chateau2-muspelheim-vi-4"],    "mots_cles": ["muspelheim", "vi"] },
+        { "id": "chateau-venus",      "nom": "Vénus",         "type": "chateau",     "numero": 3, "detail": "olaf",   "salons": ["chateau3-venus-olaf-6"],       "mots_cles": ["olaf"] },
+        { "id": "chateau-orion",      "nom": "Orion",         "type": "chateau",     "numero": 4, "detail": "",       "salons": ["chateau4-orion"],              "mots_cles": ["orion"] },
+        { "id": "chateau-10eme-ere",  "nom": "La 10e ère",    "type": "chateau",     "numero": 5, "detail": "",       "salons": ["chateau5-le10eme-era-7"],      "mots_cles": ["10eme", "era", "le10eme"] },
+        { "id": "village-midgard",    "nom": "Midgard",       "type": "village",     "numero": null, "detail": "kayjuk", "salons": ["village-midgard1-kayjuk-5"],   "mots_cles": ["midgard", "kayjuk"] },
+        { "id": "village-jotunheim",  "nom": "Jotunheim",     "type": "village",     "numero": null, "detail": "kaisa",  "salons": ["village-jotunheim4-kaisa-3"],  "mots_cles": ["jotunheim", "kaisa"] },
+        { "id": "village-venus",      "nom": "Vénus",         "type": "village",     "numero": null, "detail": "ragnar", "salons": ["vilage-venus-ragnar-6"],   "mots_cles": ["ragnar"] },
+        { "id": "village-mars",       "nom": "Mars",          "type": "village",     "numero": null, "detail": "zena",   "salons": ["village-mars-zena-2"],     "mots_cles": ["zena"] },
+        { "id": "village-jupiter",    "nom": "Jupiter",       "type": "village",     "numero": null, "detail": "syndra", "salons": ["village-jupiter-syndra-3"], "mots_cles": ["jupiter", "syndra"] },
+        { "id": "interieurs",         "nom": "Intérieurs",    "type": "interieur",   "numero": null, "detail": "",       "salons": ["interieur"],               "mots_cles": ["interieur", "interieurs", "deco"] },
+        { "id": "realisations",       "nom": "Réalisations",  "type": "realisation", "numero": null, "detail": "",       "salons": ["valheim-realisations"],    "mots_cles": ["realisation", "realisations"] },
+        { "id": "inspirations",       "nom": "Inspirations",  "type": "inspiration", "numero": null, "detail": "",       "salons": ["valheim-inspirations"],    "mots_cles": ["inspi", "inspiration", "inspirations"] }
+      ]
+    }
+  }
+}

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Galeries de jeux</title>
+  <meta name="description" content="Mes constructions dans les jeux, en images.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="entete">
+      <p class="surtitre">Carnet de bâtisseur</p>
+      <h1>Galeries de jeux</h1>
+      <p class="accroche">Ce que je construis, jeu par jeu. Les images arrivent toutes seules depuis Discord.</p>
+    </header>
+    <div class="jeux" id="jeux"></div>
+    <p class="pied">Mis à jour automatiquement chaque jour.</p>
+  </main>
+
+  <script>
+    (async function () {
+      const lire = async (url, defaut) => {
+        try { const r = await fetch(url, { cache: "no-store" }); return r.ok ? await r.json() : defaut; }
+        catch (e) { return defaut; }
+      };
+      const config = await lire("config.json", { jeux: {} });
+      const zone = document.getElementById("jeux");
+
+      const carte = (href, titre, sousTitre, image, classe) => {
+        const a = document.createElement("a");
+        a.className = "carte-jeu" + (classe ? " " + classe : "");
+        a.href = href;
+        if (image) {
+          const img = document.createElement("img");
+          img.src = image; img.alt = ""; img.loading = "lazy";
+          a.append(img);
+        }
+        const voile = document.createElement("div");
+        voile.className = "voile";
+        const h = document.createElement("h2"); h.textContent = titre;
+        const p = document.createElement("p"); p.textContent = sousTitre;
+        voile.append(h, p);
+        a.append(voile);
+        zone.append(a);
+      };
+
+      for (const [id, jeu] of Object.entries(config.jeux)) {
+        const data = await lire(id + "/data.json", { images: [] });
+        const n = data.images.length;
+        const couverture = data.images[0] ? id + "/" + data.images[0].miniature : null;
+        carte(id + "/", jeu.nom, n ? n + (n > 1 ? " images" : " image") : "Bientôt des images", couverture);
+      }
+
+      const aTrier = await lire("a-trier/data.json", { images: [] });
+      if (aTrier.images.length) {
+        carte("a-trier/", "À trier", aTrier.images.length + " image(s) sans mot-clé reconnu", null, "a-trier");
+      }
+    })();
+  </script>
+</body>
+</html>

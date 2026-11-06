@@ -1,0 +1,43 @@
+name: Tri des screens Discord
+
+on:
+  schedule:
+    - cron: "17 5 * * *"   # tous les jours vers 6h-7h (heure de Paris)
+  workflow_dispatch:        # bouton « Run workflow » pour lancer à la main
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tri-discord
+  cancel-in-progress: false
+
+jobs:
+  tri:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installer Pillow (miniatures)
+        run: pip install pillow
+
+      - name: Récupérer et trier les images
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+        run: python scripts/sync_discord.py
+
+      - name: Enregistrer les nouvelles images
+        run: |
+          git config user.name "Archiviste Discord"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Rien de nouveau."
+          else
+            git commit -m "Nouvelles images depuis Discord"
+            git push
+          fi

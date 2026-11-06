@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Valheim · Galeries</title>
+  <meta name="description" content="Châteaux, villages et intérieurs construits dans Valheim.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-jeu="valheim">
+  <main class="page">
+    <header class="entete">
+      <a class="retour" href="../">← Toutes les galeries</a>
+      <p class="surtitre">Galerie de constructions</p>
+      <h1>Valheim</h1>
+      <p class="accroche">Châteaux, villages et intérieurs bâtis à la main, monde après monde.</p>
+      <div class="chiffres">
+        <div><strong id="nb-images">0</strong>images</div>
+        <div><strong id="nb-chantiers">0</strong>châteaux et villages</div>
+        <div><strong id="derniere">—</strong>dernier ajout</div>
+      </div>
+    </header>
+
+    <nav class="filtres" id="filtres" aria-label="Filtrer par type"></nav>
+    <div id="contenu"></div>
+  </main>
+
+  <div class="visionneuse" id="visionneuse" role="dialog" aria-modal="true" aria-label="Image agrandie">
+    <button class="bouton-v fermer" type="button" aria-label="Fermer">✕</button>
+    <button class="bouton-v prec" type="button" aria-label="Précédente">‹</button>
+    <img alt="">
+    <button class="bouton-v suiv" type="button" aria-label="Suivante">›</button>
+    <div class="infos"></div>
+  </div>
+
+  <script src="../assets/galerie.js"></script>
+</body>
+</html>
