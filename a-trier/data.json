@@ -1,0 +1,17 @@
+{
+  "images": [
+    {
+      "id": "1568186014868963330-0",
+      "chantier": "a-trier",
+      "image": "images/a-trier/1568186014868963330-0.jpg",
+      "miniature": "miniatures/a-trier/1568186014868963330-0.webp",
+      "largeur": 1200,
+      "hauteur": 2536,
+      "date": "2026-11-06",
+      "auteur": "Coco l'asticot",
+      "legende": "test vrac",
+      "salon": "vrac",
+      "rangement": "à trier"
+    }
+  ]
+}
