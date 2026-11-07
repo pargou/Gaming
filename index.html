@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Galeries de jeux</title>
-  <meta name="description" content="Mes constructions dans les jeux, en images.">
+  <title>The Player's Archive</title>
+  <meta name="description" content="Mes jeux, mes mondes et mes créations.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
   <script>
     // valheim.lafabriquedepa.fr (et plus tard <autre-jeu>.lafabriquedepa.fr) ouvre directement la galerie du jeu
@@ -21,15 +21,62 @@
     })();
   </script>
 </head>
-<body>
-  <main class="page">
-    <header class="entete">
-      <p class="surtitre">Carnet de bâtisseur</p>
-      <h1>Galeries de jeux</h1>
-      <p class="accroche">Ce que je construis, jeu par jeu. Les images arrivent toutes seules depuis Discord.</p>
-    </header>
-    <div class="jeux" id="jeux"></div>
-    <p class="pied">Mis à jour automatiquement chaque jour.</p>
+<body class="accueil">
+  <div class="taverne" aria-hidden="true"></div>
+  <main class="archive">
+    <section class="hero">
+      <div class="portrait">
+        <img src="assets/portrait-taverne.png" alt="Portrait du joueur dans une taverne : barbe brune, chemise rouge, chope de bière, livres et parchemin" width="1312" height="1199" fetchpriority="high">
+      </div>
+      <div class="hero-texte">
+        <p class="surtitre">Portfolio gaming</p>
+        <h1>The Player's Archive</h1>
+        <p class="slogan">Mes jeux, mes mondes et mes créations</p>
+        <nav class="menu" aria-label="Navigation">
+          <a href="#jeux" aria-current="page">Accueil</a>
+          <a href="#jeux">Jeux</a>
+          <a href="valheim/">Galeries</a>
+          <a href="#profil">Profil</a>
+        </nav>
+      </div>
+    </section>
+
+    <section id="jeux" class="selection">
+      <h2 class="titre-section"><span>Choisis un jeu</span></h2>
+      <div class="cartes" id="cartes">
+        <a class="carte-or" id="carte-valheim" href="valheim/">
+          <div class="carte-fond" id="fond-valheim"></div>
+          <div class="carte-voile">
+            <h3>Valheim</h3>
+            <p>Châteaux · Villages · Intérieurs</p>
+            <p class="carte-compte" id="compte-valheim"></p>
+          </div>
+        </a>
+        <div class="carte-or verrouillee" aria-disabled="true">
+          <div class="carte-fond"></div>
+          <div class="carte-voile">
+            <span class="cadenas" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+            </span>
+            <h3>Satisfactory</h3>
+            <p>À venir</p>
+          </div>
+        </div>
+      </div>
+      <p class="a-trier-lien" id="lien-a-trier" hidden><a href="a-trier/">À trier</a></p>
+    </section>
+
+    <section id="profil" class="profil">
+      <h2 class="titre-section"><span>Profil joueur</span></h2>
+      <div class="steam">
+        <p class="steam-titre">Compte Steam</p>
+        <p class="steam-texte">Profil, bibliothèque complète et activité sur Steam.</p>
+        <p class="steam-id">SteamID64 · <code>76561198157614505</code></p>
+        <a class="steam-lien" href="https://steamcommunity.com/profiles/76561198157614505" target="_blank" rel="noopener">Voir le profil Steam</a>
+      </div>
+    </section>
+
+    <p class="pied">Mis à jour automatiquement depuis Discord.</p>
   </main>
 
   <script>
@@ -39,37 +86,23 @@
         catch (e) { return defaut; }
       };
       const config = await lire("config.json", { jeux: {} });
-      const zone = document.getElementById("jeux");
-
-      const carte = (href, titre, sousTitre, image, classe) => {
-        const a = document.createElement("a");
-        a.className = "carte-jeu" + (classe ? " " + classe : "");
-        a.href = href;
-        if (image) {
-          const img = document.createElement("img");
-          img.src = image; img.alt = ""; img.loading = "lazy";
-          a.append(img);
-        }
-        const voile = document.createElement("div");
-        voile.className = "voile";
-        const h = document.createElement("h2"); h.textContent = titre;
-        const p = document.createElement("p"); p.textContent = sousTitre;
-        voile.append(h, p);
-        a.append(voile);
-        zone.append(a);
-      };
-
-      for (const [id, jeu] of Object.entries(config.jeux)) {
-        const data = await lire(id + "/data.json", { images: [] });
-        const n = data.images.length;
-        const couverture = data.images[0] ? id + "/" + data.images[0].miniature : null;
-        carte(id + "/", jeu.nom, n ? n + (n > 1 ? " images" : " image") : "Bientôt des images", couverture);
+      const jeu = config.jeux.valheim;
+      // Les archives personnelles (réalisations, inspirations) ne sont pas comptées ni affichées
+      const masques = new Set(((jeu && jeu.chantiers) || [])
+        .filter((c) => c.type === "realisation" || c.type === "inspiration").map((c) => c.id));
+      const data = await lire("valheim/data.json", { images: [] });
+      const images = data.images.filter((im) => !masques.has(im.chantier));
+      const n = images.length;
+      document.getElementById("compte-valheim").textContent =
+        n ? n + (n > 1 ? " captures" : " capture") : "Bientôt des images";
+      if (images[0]) {
+        const fond = document.getElementById("fond-valheim");
+        const img = new Image();
+        img.onload = () => { fond.style.backgroundImage = "url('valheim/" + images[0].miniature + "')"; fond.classList.add("charge"); };
+        img.src = "valheim/" + images[0].miniature;
       }
-
       const aTrier = await lire("a-trier/data.json", { images: [] });
-      if (aTrier.images.length) {
-        carte("a-trier/", "À trier", aTrier.images.length + " image(s) sans mot-clé reconnu", null, "a-trier");
-      }
+      if (aTrier.images.length) document.getElementById("lien-a-trier").hidden = false;
     })();
   </script>
 </body>
