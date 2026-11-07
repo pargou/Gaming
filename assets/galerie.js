@@ -38,7 +38,11 @@
     const donnees = await charger("data.json", { images: [] });
     const jeu = config.jeux[jeuId];
 
-    let chantiers = jeu ? jeu.chantiers.slice() : [];
+    // Archives personnelles (doublons) : conservées dans les données, jamais affichées
+    const MASQUES = new Set(["realisation", "inspiration"]);
+    let chantiers = jeu ? jeu.chantiers.filter((c) => !MASQUES.has(c.type)) : [];
+    const idsMasques = new Set(jeu ? jeu.chantiers.filter((c) => MASQUES.has(c.type)).map((c) => c.id) : []);
+    donnees.images = donnees.images.filter((im) => !idsMasques.has(im.chantier));
     const connus = new Set(chantiers.map((c) => c.id));
     // images dont le chantier n'existe pas (ou plus) dans la config
     const orphelines = donnees.images.filter((im) => !connus.has(im.chantier));
