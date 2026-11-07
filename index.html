@@ -9,17 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
-  <script>
-    // valheim.lafabriquedepa.fr (et plus tard <autre-jeu>.lafabriquedepa.fr) ouvre directement la galerie du jeu
-    (function () {
-      var sous = location.hostname.split(".")[0];
-      if (/^[a-z0-9-]+$/.test(sous) && !["www", "jeux", "localhost"].includes(sous) && location.hostname.split(".").length > 2) {
-        fetch("config.json").then(function (r) { return r.json(); }).then(function (c) {
-          if (c.jeux && c.jeux[sous]) location.replace("/" + sous + "/");
-        });
-      }
-    })();
-  </script>
 </head>
 <body class="accueil">
   <div class="taverne" aria-hidden="true"></div>
