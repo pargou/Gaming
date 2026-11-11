@@ -3,30 +3,98 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Valheim · Galeries</title>
-  <meta name="description" content="Châteaux, villages et intérieurs construits dans Valheim.">
+  <title>Valheim · La Taverne de Coco</title>
+  <meta name="description" content="Châteaux, villages et intérieurs construits dans Valheim : galerie de La Taverne de Coco.">
+  <meta property="og:title" content="Valheim · La Taverne de Coco">
+  <meta name="theme-color" content="#1c110a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/taverne.css">
 </head>
-<body data-jeu="valheim">
-  <main class="page">
+<body class="taverne" data-jeu="valheim">
+  <!-- Pictogrammes partagés -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-maison" viewBox="0 0 24 24"><path d="M3 11 12 3l9 8M5 9.5V21h5v-6h4v6h5V9.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+      <symbol id="i-manette" viewBox="0 0 24 24"><path d="M7 8h10a4.5 4.5 0 0 1 4.4 5.4l-.8 3.8a2.2 2.2 0 0 1-3.8 1L14.6 16H9.4l-2.2 2.2a2.2 2.2 0 0 1-3.8-1l-.8-3.8A4.5 4.5 0 0 1 7 8Z M7.5 11v3M6 12.5h3M15.5 12h.01M17.5 13.6h.01" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-calques" viewBox="0 0 24 24"><path d="m12 3 9 4.5-9 4.5-9-4.5L12 3ZM3 12l9 4.5 9-4.5M3 16.5 12 21l9-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+      <symbol id="i-profil" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 21c.8-4.2 4-6.5 8-6.5s7.2 2.3 8 6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+      <symbol id="i-haches" viewBox="0 0 48 48"><g fill="currentColor"><path d="M9 6c5 0 10 3 12 8l-5 5C12 18 8 13 9 6Z"/><path d="M39 6c-5 0-10 3-12 8l5 5c4-1 8-6 7-13Z"/><path d="M15 15.5 17.5 13l22 22-2.5 2.5zM33 15.5 30.5 13l-22 22 2.5 2.5z"/><circle cx="9.5" cy="38.5" r="2.6"/><circle cx="38.5" cy="38.5" r="2.6"/></g></symbol>
+      <symbol id="i-monts" viewBox="0 0 48 48"><path d="M3 40 17 16l8 12 5-7 15 19Z" fill="currentColor"/><path d="m17 16-3.6 6.2 3.6-1.8 3 2.4Z" fill="#fff3d0" opacity=".65"/></symbol>
+      <symbol id="i-laurier" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M17 40C8 35 6 22 12 10M31 40c9-5 11-18 5-30"/></g><g fill="currentColor"><ellipse cx="8.6" cy="18" rx="2.2" ry="4.4" transform="rotate(-25 8.6 18)"/><ellipse cx="8.4" cy="26" rx="2.2" ry="4.4" transform="rotate(-50 8.4 26)"/><ellipse cx="11.8" cy="33" rx="2.2" ry="4.4" transform="rotate(-70 11.8 33)"/><ellipse cx="39.4" cy="18" rx="2.2" ry="4.4" transform="rotate(25 39.4 18)"/><ellipse cx="39.6" cy="26" rx="2.2" ry="4.4" transform="rotate(50 39.6 26)"/><ellipse cx="36.2" cy="33" rx="2.2" ry="4.4" transform="rotate(70 36.2 33)"/><path d="M24 14l2.4 5 5.4.6-4 3.7 1.1 5.3L24 26l-4.9 2.6 1.1-5.3-4-3.7 5.4-.6Z"/></g></symbol>
+      <symbol id="i-cadenas" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+      <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m3 16 5-5 4 4 3-3 6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="16" cy="9" r="1.6" fill="currentColor"/></symbol>
+      <symbol id="i-chateau" viewBox="0 0 24 24"><path d="M3 21V9h2V7h2v2h2V7h2v2h2V7h2v2h2V7h2v2h2v12h-7v-4a2 2 0 0 0-4 0v4Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 2v4M12 2h3l-1 1 1 1h-3" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+      <symbol id="i-sablier" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+      <symbol id="i-livres" viewBox="0 0 24 24"><path d="M4 17.5h16v3H4zM5 13h14v4.5H5zM4 8.5h16V13H4zM6 4h12v4.5H6z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+      <symbol id="i-orne" viewBox="0 0 110 10"><path d="M0 5h44M66 5h44" stroke="currentColor" stroke-width="1"/><path d="m55 1 4 4-4 4-4-4Z" fill="currentColor"/><circle cx="47" cy="5" r="1.6" fill="currentColor"/><circle cx="63" cy="5" r="1.6" fill="currentColor"/></symbol>
+      <symbol id="i-lanterne" viewBox="0 0 46 110"><path d="M23 0v18" stroke="currentColor" stroke-width="1.5"/><circle cx="23" cy="21" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 32h22l-4-8H16Z" fill="#3a2414" stroke="currentColor" stroke-width="1.2"/><rect x="11" y="32" width="24" height="42" rx="2" fill="rgba(255,170,60,.28)" stroke="currentColor" stroke-width="1.6"/><path d="M23 32v42M11 53h24" stroke="currentColor" stroke-width=".8" opacity=".55"/><path class="flamme" d="M23 44c4 5 4 10 0 13-4-3-4-8 0-13Z" fill="#ffcf73"/><path d="M9 74h28l-3 7H12Z" fill="#3a2414" stroke="currentColor" stroke-width="1.2"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="decor" aria-hidden="true">
+    <div class="lueur lueur-g"></div>
+    <div class="lueur lueur-d"></div>
+    <div class="lueur lueur-feu"></div>
+    <div class="poteau poteau-g"></div>
+    <div class="poteau poteau-d"></div>
+    <svg class="lanterne lanterne-g" viewBox="0 0 46 110"><use href="#i-lanterne"/></svg>
+    <svg class="lanterne lanterne-d" viewBox="0 0 46 110"><use href="#i-lanterne"/></svg>
+  </div>
+
+  <header class="barre">
+    <div class="barre-in">
+      <a class="blason" href="../" aria-label="La Taverne de Coco, accueil">
+        <svg class="fanion" viewBox="0 0 54 76" aria-hidden="true">
+          <path d="M2 0h50v62L27 74 2 62Z" fill="#7c1f1d"/>
+          <path d="M2 0h50v62L27 74 2 62Z" fill="none" stroke="#d9b46a" stroke-width="2"/>
+          <path d="M7 0v58l20 10 20-10V0" fill="none" stroke="#d9b46a" stroke-width=".8" opacity=".6"/>
+          <use href="#i-haches" x="11" y="14" width="32" height="32" style="color:#e9c77e"/>
+        </svg>
+        <span class="blason-nom"><small>La Taverne</small><span>de Coco</span></span>
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="../"><svg aria-hidden="true"><use href="#i-maison"/></svg>Accueil</a>
+        <a href="../#jeux"><svg aria-hidden="true"><use href="#i-manette"/></svg>Jeux</a>
+        <a href="./" aria-current="page"><svg aria-hidden="true"><use href="#i-calques"/></svg>Galeries</a>
+        <a href="../#registre"><svg aria-hidden="true"><use href="#i-profil"/></svg>Profil</a>
+      </nav>
+      <span class="barre-cale" aria-hidden="true"></span>
+    </div>
+  </header>
+
+  <main class="galerie-salle">
     <header class="entete">
-      <a class="retour" href="../">← Toutes les galeries</a>
-      <p class="surtitre">Galerie de constructions</p>
+      <a class="retour" href="../">← Retour à la taverne</a>
+      <p class="orne">Galerie de constructions</p>
       <h1>Valheim</h1>
-      <p class="accroche">Châteaux, villages et intérieurs bâtis à la main, monde après monde.</p>
+      <p class="accroche" id="accroche">Châteaux, villages et intérieurs bâtis à la main, monde après monde.</p>
       <div class="chiffres">
-        <div><strong id="nb-images">0</strong>images</div>
-        <div><strong id="nb-chantiers">0</strong>châteaux et villages</div>
+        <div><strong id="nb-images">0</strong>captures</div>
+        <div><strong id="nb-chantiers">0</strong>constructions</div>
         <div><strong id="derniere">—</strong>dernier ajout</div>
       </div>
     </header>
 
-    <nav class="filtres" id="filtres" aria-label="Filtrer par type"></nav>
-    <div id="contenu"></div>
+    <nav class="filtres" id="filtres" aria-label="Filtrer les constructions"></nav>
+    <p class="consigne" id="consigne" style="text-align:center;color:#cdb98f;font-size:14px;margin:4px 0 18px">Choisis une construction pour voir ses photos.</p>
+    <div class="constructions" id="constructions"></div>
+
+    <section class="detail-construction" id="detail" hidden aria-live="polite">
+      <div class="detail-tete">
+        <span class="rang-type" id="detail-type"></span>
+        <h2 id="detail-nom"></h2>
+        <span class="etiquette" id="detail-etiquette" hidden></span>
+        <span class="compte" id="detail-compte"></span>
+        <button class="fermer-detail" type="button" id="detail-fermer">Fermer</button>
+      </div>
+      <div class="mur" id="detail-mur"></div>
+    </section>
   </main>
+
+  <p class="pied-taverne">Galerie mise à jour automatiquement depuis Discord.</p>
 
   <div class="visionneuse" id="visionneuse" role="dialog" aria-modal="true" aria-label="Image agrandie">
     <button class="bouton-v fermer" type="button" aria-label="Fermer">✕</button>
@@ -36,6 +104,6 @@
     <div class="infos"></div>
   </div>
 
-  <script src="../assets/galerie.js"></script>
+  <script src="../assets/constructions.js"></script>
 </body>
 </html>
