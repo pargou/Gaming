@@ -1,0 +1,45 @@
+name: Registre Steam
+
+on:
+  schedule:
+    - cron: "43 4 * * *"   # chaque jour, hors de la minute 17 du tri Discord
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Même groupe que le tri Discord : les deux ne poussent jamais en même temps sur main
+concurrency:
+  group: tri-discord
+  cancel-in-progress: false
+
+jobs:
+  steam:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Relever le registre Steam
+        env:
+          STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
+        run: python scripts/sync_steam.py
+
+      - name: Enregistrer le registre
+        run: |
+          git config user.name "Archiviste Steam"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add donnees/
+          if git diff --cached --quiet; then
+            echo "Registre inchangé."
+            exit 0
+          fi
+          git commit -m "Registre Steam"
+          for essai in 1 2 3; do
+            git pull --rebase -q && git push && exit 0
+            sleep $((essai * 10))
+          done
+          exit 1

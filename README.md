@@ -25,3 +25,15 @@ Onglet **Actions** → « Tri des screens Discord » → **Run workflow**.
 
 Il est stocké dans *Settings → Secrets and variables → Actions* sous le nom `DISCORD_TOKEN`.
 Il n'est jamais écrit dans le code.
+
+## Registre Steam (accueil)
+
+Chaque jour, le workflow « Registre Steam » lance `scripts/sync_steam.py` :
+il interroge l'API Web Steam (profil et temps de jeu) et écrit `donnees/steam.json`
+(pseudo, heures, trois jeux les plus joués, date du relevé) et `donnees/steam-avatar.jpg`.
+
+- La clé est stockée dans *Settings → Secrets and variables → Actions* sous le nom `STEAM_API_KEY`.
+  Elle n'est jamais écrite dans le code, les fichiers publics ni les journaux.
+- Si la clé manque, si Steam ne répond pas ou si la bibliothèque est privée,
+  les dernières données valides sont conservées et l'accueil n'affiche aucune statistique inventée.
+- Les deux workflows partagent le même groupe de concurrence : ils ne poussent jamais en même temps sur `main`.
