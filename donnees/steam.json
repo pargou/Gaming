@@ -1,4 +1,40 @@
 {
-  "note": "En attente de la première synchronisation Steam (workflow Registre Steam).",
-  "profil": null
+  "synchronise_le": "2026-11-11T12:34:09Z",
+  "steamid": "76561198157614505",
+  "profil": {
+    "pseudo": "Le bon chèvre",
+    "avatar": "donnees/steam-avatar.jpg",
+    "url": "https://steamcommunity.com/profiles/76561198157614505"
+  },
+  "bibliotheque_visible": true,
+  "heures_total": 9341.0,
+  "top": [
+    {
+      "appid": 892970,
+      "nom": "Valheim",
+      "heures": 1519.1
+    },
+    {
+      "appid": 730,
+      "nom": "Counter-Strike 2",
+      "heures": 894.6
+    },
+    {
+      "appid": 252950,
+      "nom": "Rocket League",
+      "heures": 883.2
+    }
+  ],
+  "jeux": {
+    "892970": {
+      "nom": "Valheim",
+      "heures": 1519.1,
+      "derniere_partie": "2026-10-20"
+    },
+    "526870": {
+      "nom": "Satisfactory",
+      "heures": 267.2,
+      "derniere_partie": "2026-04-13"
+    }
+  }
 }
