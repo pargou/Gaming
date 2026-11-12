@@ -1,5 +1,5 @@
 {
-  "synchronise_le": "2026-11-11T12:34:09Z",
+  "synchronise_le": "2026-11-12T13:12:59Z",
   "steamid": "76561198157614505",
   "profil": {
     "pseudo": "Le bon chèvre",
@@ -7,7 +7,7 @@
     "url": "https://steamcommunity.com/profiles/76561198157614505"
   },
   "bibliotheque_visible": true,
-  "heures_total": 9341.0,
+  "heures_total": 9351.6,
   "top": [
     {
       "appid": 892970,
@@ -22,7 +22,7 @@
     {
       "appid": 252950,
       "nom": "Rocket League",
-      "heures": 883.2
+      "heures": 887.5
     }
   ],
   "jeux": {
