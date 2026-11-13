@@ -1,5 +1,5 @@
 {
-  "synchronise_le": "2026-11-12T13:12:59Z",
+  "synchronise_le": "2026-11-13T12:35:01Z",
   "steamid": "76561198157614505",
   "profil": {
     "pseudo": "Le bon chèvre",
@@ -7,7 +7,7 @@
     "url": "https://steamcommunity.com/profiles/76561198157614505"
   },
   "bibliotheque_visible": true,
-  "heures_total": 9351.6,
+  "heures_total": 9365.5,
   "top": [
     {
       "appid": 892970,
@@ -17,12 +17,12 @@
     {
       "appid": 730,
       "nom": "Counter-Strike 2",
-      "heures": 894.6
+      "heures": 900.4
     },
     {
       "appid": 252950,
       "nom": "Rocket League",
-      "heures": 887.5
+      "heures": 888.6
     }
   ],
   "jeux": {
