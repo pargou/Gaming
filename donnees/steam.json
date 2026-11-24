@@ -1,5 +1,5 @@
 {
-  "synchronise_le": "2026-11-23T15:18:24Z",
+  "synchronise_le": "2026-11-24T15:14:33Z",
   "steamid": "76561198157614505",
   "profil": {
     "pseudo": "Le bon chèvre",
@@ -7,7 +7,7 @@
     "url": "https://steamcommunity.com/profiles/76561198157614505"
   },
   "bibliotheque_visible": true,
-  "heures_total": 9436.6,
+  "heures_total": 9437.3,
   "top": [
     {
       "appid": 892970,
@@ -17,7 +17,7 @@
     {
       "appid": 730,
       "nom": "Counter-Strike 2",
-      "heures": 926.1
+      "heures": 926.8
     },
     {
       "appid": 252950,
